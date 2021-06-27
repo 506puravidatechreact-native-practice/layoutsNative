@@ -1,51 +1,130 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, View, Image, Text, ScrollView} from 'react-native';
 
 const App = () => {
   return (
-    <View style={styles.contenedor}>
-      <View style={styles.box1} />
-      <View style={styles.box2} />
-      <View style={styles.box3} />
-      <View style={styles.box4} />
-    </View>
+    <ScrollView>
+      <View style={{flexDirection: 'row'}}>
+        <Image style={styles.banner} source={require('./assets/img/bg.jpg')} />
+      </View>
+      <View style={styles.container}>
+        <Text style={styles.title}>Que hacer en Paris</Text>
+        <ScrollView horizontal>
+          <View>
+            <Image
+              style={styles.city}
+              source={require('./assets/img/actividad1.jpg')}
+            />
+          </View>
+          <View>
+            <Image
+              style={styles.city}
+              source={require('./assets/img/actividad2.jpg')}
+            />
+          </View>
+          <View>
+            <Image
+              style={styles.city}
+              source={require('./assets/img/actividad3.jpg')}
+            />
+          </View>
+          <View>
+            <Image
+              style={styles.city}
+              source={require('./assets/img/actividad4.jpg')}
+            />
+          </View>
+          <View>
+            <Image
+              style={styles.city}
+              source={require('./assets/img/actividad5.jpg')}
+            />
+          </View>
+        </ScrollView>
+        <Text style={styles.title}>Los Mejores alojamientos</Text>
+        <View>
+          <View>
+            <Image
+              style={styles.bestPlaces}
+              source={require('./assets/img/mejores1.jpg')}
+            />
+          </View>
+          <View>
+            <Image
+              style={styles.bestPlaces}
+              source={require('./assets/img/mejores2.jpg')}
+            />
+          </View>
+          <View>
+            <Image
+              style={styles.bestPlaces}
+              source={require('./assets/img/mejores3.jpg')}
+            />
+          </View>
+        </View>
+        <Text style={styles.title}>Hospedaje en los Angeles</Text>
+        <View style={styles.list}>
+          <View style={styles.itemList}>
+            <Image
+              style={styles.bestPlaces}
+              source={require('./assets/img/hospedaje1.jpg')}
+            />
+          </View>
+          <View style={styles.itemList}>
+            <Image
+              style={styles.bestPlaces}
+              source={require('./assets/img/hospedaje2.jpg')}
+            />
+          </View>
+          <View style={styles.itemList}>
+            <Image
+              style={styles.bestPlaces}
+              source={require('./assets/img/hospedaje3.jpg')}
+            />
+          </View>
+          <View style={styles.itemList}>
+            <Image
+              style={styles.bestPlaces}
+              source={require('./assets/img/hospedaje4.jpg')}
+            />
+          </View>
+        </View>
+      </View>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
-  contenedor: {
-    backgroundColor: 'cornflowerblue',
-    flex: 1,
-    //flexDirection: 'column', //default
-    
-    //flexDirection: 'column-reverse',
-
-    // la alineacion default no es igual que en reactJS
+  banner: {
+    height: 250,
+    flex: 1, // aca se acomoda la imagen porque el flexDirection se cambio
+  },
+  title: {
+    fontWeight: 'bold',
+    fontSize: 20,
+    marginVertical: 20,
+  },
+  container: {
+    marginHorizontal: 10,
+  },
+  city: {
+    width: 250,
+    height: 300,
+    marginRight: 10,
+  },
+  bestPlaces: {
+    width: '100%',
+    height: 200,
+    marginVertical: 5,
+  },
+  list: {
     flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-
-    //En este forma cambiamos el axis por eso 
-    //debemos alinear verticalmente con justifyContent
-    //flexDirection: 'column',
-    //justifyContent: 'center',
-
+    flexWrap: 'wrap', // permite que se coloquen en la pantalla
+    justifyContent: 'space-between', // al quitarle el 1% al flexbasis se ajusta la separacione entre imagenes
   },
-  box1: {
-    backgroundColor: 'navy',
-    padding: 15,
-  },
-  box2: {
-    backgroundColor: 'yellow',
-    padding: 15,
-  },
-  box3: {
-    backgroundColor: 'green',
-    padding: 15,
-  },
-  box4: {
-    backgroundColor: 'teal',
-    padding: 15,
+  itemList: {
+    flexBasis: '49%', //utilizamos esta propiedad porque el padre tiene una direction row
+    // se le quita un 1% como tip del ajuste d eespacio
   },
 });
 
